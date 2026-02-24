@@ -1,0 +1,50 @@
+# implementation_plan.md
+
+# Modern Cutlist Optimizer
+
+Build a modern, high-performance 2D cutlist optimizer using React and Vite. The application will help woodworkers and makers calculate the most efficient way to cut panels from stock sheets, minimizing waste and providing clear visual instructions.
+
+## User Review Required
+
+> [!IMPORTANT]
+> The optimization will use a **Guillotine Cut Algorithm**, which is standard for saw-based operations where cuts must go from one edge to the other. This differs from "irregular nesting" used in CNC or laser cutting.
+
+## Proposed Changes
+
+### Core Structure
+Initialize a new React + Vite project with a modern design system.
+
+#### [NEW] [App.jsx](file:///Users/swajit/AIProjects/craftydesi/src/App.jsx)
+Main entry point with layout components.
+
+#### [NEW] [optimizer.js](file:///Users/swajit/AIProjects/craftydesi/src/utils/optimizer.js)
+The logic for the 2D guillotine cut optimization. It will handle:
+- Part rotation
+- Blade kerf (thickness)
+- Grain direction
+- Multi-sheet optimization
+
+### Components
+#### [NEW] [Sidebar.jsx](file:///Users/swajit/AIProjects/craftydesi/src/components/Sidebar.jsx)
+Input forms for Panels and Stock Sheets with a spreadsheet-like feel.
+
+#### [NEW] [Visualizer.jsx](file:///Users/swajit/AIProjects/craftydesi/src/components/Visualizer.jsx)
+Canvas-based renderer for the cutting patterns. Interactive zoom and pan.
+
+#### [NEW] [Stats.jsx](file:///Users/swajit/AIProjects/craftydesi/src/components/Stats.jsx)
+Summary of material usage, waste percentage, and total cuts.
+
+### Styling
+#### [NEW] [index.css](file:///Users/swajit/AIProjects/craftydesi/src/index.css)
+Global styles using a modern, dark-themed (or switchable) palette, glassmorphism, and smooth transitions.
+
+## Verification Plan
+
+### Automated Tests
+- logic tests for the `optimizer.js` to ensure it correctly calculates areas and respects kerf.
+
+### Manual Verification
+1.  **Input Validation**: Ensure negative dimensions or impossible quantities are handled.
+2.  **Visual Proof**: Compare the generated canvas layout with a known set of parts to ensure no overlap and correct spacing.
+3.  **UI Responsiveness**: Test the layout on different screen sizes to ensure the sidebar and visualizer remain usable.
+4.  **Edge Cases**: Test with parts larger than stock, zero kerf, and grain direction constraints.
